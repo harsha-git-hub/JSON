@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>fetch Json data</title>
+		
+		<script>
+			function fetchJsonData()
+			{
+				var jsondata='[{"name":"sai","city":"ongole","state":"ap","phoneno": 1234,"age":15},{"name":"yuva","city":"chennai","state":"tamil nadhu","phoneno":1234,"age":15},{"name":"charan","city":"ongole","state":"andhra pradesh","phoneno":1234,"age":15},{"name":"surya","city":"belai","state":"delhi","phoneno":1234,"age":15},{"name":"karuna","city":"chennai","state":"tamil nadhu","phoneno":"1234","age":15}]';
+				alert(jsondata.length);
+				var myjsondata=JSON.parse(jsondata);
+				alert(myjsondata.length);
+				
+				var tabledata="<table align='center' bgcolor='skyblue' border=1>";
+						tabledata=tabledata+"<tr>";
+			  				tabledata=tabledata+"<th>Name</th><th>City</th><th>State</th><th>Phoneno</th><th>Age</th>";
+						tabledata=tabledata+"</tr>";
+						
+						for(var i=0;i<myjsondata.length;i++)
+							{
+							  tabledata=tabledata+"<tr>";
+								tabledata=tabledata+"<td>"+myjsondata[i].name+"</td>";
+								tabledata=tabledata+"<td>"+myjsondata[i].city+"</td>";
+								tabledata=tabledata+"<td>"+myjsondata[i].state+"</td>";
+								tabledata=tabledata+"<td>"+myjsondata[i].phoneno+"</td>";
+								tabledata=tabledata+"<td>"+myjsondata[i].age+"</td>";
+							  tabledata=tabledata+"</tr>";
+							}
+							
+							tabledata=tabledata+"</table>";
+							document.getElementById("result").innerHTML=tabledata;
+			}//fetchJsonData closes			
+		</script>
+	</head>
+	<body>
+		<button onclick="fetchJsonData()">fetch Json Data</button>
+		<div id="result">
+			
+		</div>
+	</body>
+</html>

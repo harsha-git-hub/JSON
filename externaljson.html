@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<title>External Json</title>
+		<link href="dist/css/bootstrap.css" rel="stylesheet">
+		<script>
+			function fetchExternaljson()
+			 {
+			 	var xhttp;
+				  if (window.XMLHttpRequest) {
+					// code for modern browsers
+					xhttp = new XMLHttpRequest();
+					} else {
+					// code for IE6, IE5
+					xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				  }
+				  xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+					  var myjsondata=JSON.parse(this.responseText);
+					  
+					  var data="<table class='table table-striped'>";
+								data=data+"<thead>";
+									data=data+"<tr>";
+										data=data+"<th>Name</th><th>City</th><th>State</th><th>Phoneno</th><th>Age</th>";
+									data=data+"</tr>";
+								data=data+"</thead>";
+								data=data+"</tbody>";
+									for (var i=0;i<myjsondata.length;i++)
+									{
+										data=data+"<tr>";
+											data=data+"<td>"+myjsondata[i].name+"</td>";
+											data=data+"<td>"+myjsondata[i].city+"</td>";
+											data=data+"<td>"+myjsondata[i].state+"</td>";
+											data=data+"<td>"+myjsondata[i].phoneno+"</td>";
+											data=data+"<td>"+myjsondata[i].age+"</td>";
+										data=data+"</tr>";
+										
+									}
+								data=data+"</tbody>";
+					  data=data+"</table>";
+					  document.getElementById("demo").innerHTML=data;
+					}
+				  };
+				  xhttp.open("GET", "user.json", true);
+				  xhttp.send();
+			 }
+		</script>
+	</head>
+	<body>
+		<div class="container">
+		   <div class="row">
+				<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<ul class="nav nav-tabs">
+							<li><a href="#fetch" onclick="fetchExternaljson()">Fetch External json(student detalis) </a></li>
+						</ul>
+					</div>
+				<div class="col-md-3"></div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12" id="demo">
+				
+				</div>
+			</div>
+		</div><!-----------container closes---------->
+	</body>
+</html>
